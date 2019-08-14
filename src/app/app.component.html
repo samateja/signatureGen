@@ -26,25 +26,25 @@
             <fieldset class="col-md-4 form-group">
                 <label for="position">Position</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="position"
-                    placeholder="Enter Position">
+                    placeholder="Enter Position" [(ngModel)]="position" name="position">
             </fieldset>
 
             <!---------------------------------------------------------------------->
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">First Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="firstName"
-                    placeholder="Enter First Name">
+                    placeholder="Enter First Name" [(ngModel)]="firstName" name="firstName">
             </fieldset>
             <fieldset class="col-md-3 form-group">
-                <label for="firstName">Last Name</label>
+                <label for="lastName">Last Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="lastName"
-                    placeholder="Enter Last Name">
+                    placeholder="Enter Last Name" [(ngModel)]="lastName" name="lastName">
             </fieldset>
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
                 <div class="input-group">
                     <input (click)="$event.target.select()" type="text" class="form-control"
-                        placeholder="Enter Email Address">
+                        placeholder="Enter Email Address" [(ngModel)]="emailPrefix" name="emailPrefix">
                     <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1"
                         style="cursor:pointer">
                         <select class="input-group-addon-emaildropdown-select">
