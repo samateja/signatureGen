@@ -1,46 +1,50 @@
+<div class="main" style="width:80%; display:block; margin-left: auto; margin-right: auto;">
+    <div class="header">
+        <h1>Serviceware SE Email Signature Generator</h1>
+        <div style="color: #A0A0A0; margin-bottom:10px;">Version {{version}} </div>
+        Please enter your details below. Your signature files will be generated automatically.<br /><br />
+    </div>
 
-    <div class="main" style="width:80%; display:block; margin-left: auto; margin-right: auto;" >
-      <div class="header">
-          <h1>Serviceware SE Email Signature Generator</h1>
-          <div style="color: #A0A0A0; margin-bottom:10px;">Version {{version}} </div>
-          Please enter your details below. Your signature files will be generated automatically.<br /><br />
-      </div>
-    
-      <form class="well" style="width:1000px;">
+    <form class="well" style="width:1000px;">
         <div class="input-group">
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
-                <select class="form-control" name="companyList" id="companyList" >
-                    <option *ngFor="let company of companies.companies " value="{{company.id}}">{{company.name}}</option>
+                <select class="form-control" name="companyList" id="companyList">
+                    <option *ngFor="let company of companies.companies " value="{{company.id}}">{{company.name}}
+                    </option>
                 </select>
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="location">Select Location</label>
-                <select class="form-control" name="locationList" id="locationList" >
-                    <option *ngFor="let location of locataions.locations"  value="{{location.id}}">{{location.town}}</option>
+                <select class="form-control" name="locationList" id="locationList">
+                    <option *ngFor="let location of locations.locations" value="{{location.id}}">{{location.town}}
+                    </option>
                 </select>
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="position">Position</label>
-                <input (click)="this.select();" type="text" class="form-control" id="position" placeholder="Enter Position" >
-            </fieldset> 
+                <input (click)="this.select();" type="text" class="form-control" id="position"
+                    placeholder="Enter Position">
+            </fieldset>
 
-            <!----------------------------------------------------------------------> 
+            <!---------------------------------------------------------------------->
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">First Name</label>
-                <input (click)="this.select();" type="text" class="form-control" id="firstName" placeholder="Enter First Name" >
+                <input (click)="this.select();" type="text" class="form-control" id="firstName"
+                    placeholder="Enter First Name">
             </fieldset>
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">Last Name</label>
-                <input (click)="this.select();" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" >
+                <input (click)="this.select();" type="text" class="form-control" id="lastName"
+                    placeholder="Enter Last Name">
             </fieldset>
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
                 <div class="input-group">
-                    <input (click)="this.select();" type="text" class="form-control" placeholder="Enter Email Address" >
+                    <input (click)="this.select();" type="text" class="form-control" placeholder="Enter Email Address">
                     <span class="input-group-addon" id="basic-addon1" style="cursor:pointer">
-                        <select *ngFor="let item of emailSuffixes" >
-                            <option value="Select Email" selected></option> 
+                        <select *ngFor="let item of emailSuffixes">
+                            <option value="Select Email" selected></option>
                         </select>
                     </span>
                 </div>
@@ -50,24 +54,27 @@
                 <label for="telNr">Telephone Number</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
-                    <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number" >
+                    <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number">
                 </div>
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="telNr">Mobile Number</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
-                    <input (click)="this.select();" type="text" class="form-control" id="mobileNr" placeholder="Enter Mobile Number" >
+                    <input (click)="this.select();" type="text" class="form-control" id="mobileNr"
+                        placeholder="Enter Mobile Number">
                 </div>
             </fieldset>
 
             <fieldset class="col-md-2 form-group">
                 <label for="supportNr">Support Number?</label>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;" (click)="showSupportNum = true">
+                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;"
+                        (click)="showSupportNum = true">
                         <input type="radio" />Yes
                     </label>
-                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;" (click)="showSupportNum = false">
+                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;"
+                        (click)="showSupportNum = false">
                         <input type="radio" checked />No
                     </label>
                 </div>
@@ -76,33 +83,25 @@
             <fieldset class="col-md-2 form-group">
                 <label for="linkLang">Why Serviceware</label>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;" (click)="langGer = true">
+                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;"
+                        (click)="langGer = true">
                         <input type="radio" />DE
                     </label>
-                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;" (click)="langGer = false">
+                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;"
+                        (click)="langGer = false">
                         <input type="radio" checked />EN
                     </label>
                 </div>
             </fieldset>
-            <!---------------------------------------------------------------------->
-            <!--<fieldset class="col-md-12 form-group">
-                <label for="email">Select shown Social Media Icons</label><br />
 
-                <div class="btn-group" data-toggle="buttons" style="width:100%">
-                    <label ng-click="showXing = !showXing" class="btn btn-secondary"><input type="checkbox" />Xing (Group)</label>
-                    <label ng-click="showTwitterPMCS = !showTwitterPMCS" class="btn btn-secondary"><input type="checkbox" />Twitter (PMCS)</label>
-                    <label ng-click="showTwitterHelpline = !showTwitterHelpline" class="btn btn-secondary"><input type="checkbox" />Twitter (helpLine)</label>
-                    <label ng-click="showFacebook = !showFacebook" class="btn btn-secondary"><input type="checkbox" />Facebook (Group)</label>
-                    <label ng-click="showLinkedin = !showLinkedin" class="btn btn-secondary"><input type="checkbox" />Linkedin (Group)</label>
-                </div>
-            </fieldset>-->
             <fieldset style="display:none;" class="col-md-6 form-group">
                 <label for="logoSelection">Logo</label>
-                <select class="form-control" name="logoList" id="logoList" >
+                <select class="form-control" name="logoList" id="logoList">
                     <option *ngFor="let logo of logos" value="{{logo.id}}">{{logo.name}}</option>
                 </select>
             </fieldset>
 
-            <button (click)="submit()" type="submit" class="btn btn-secondary pull-right" [disabled]="!readyToSubmit">Generate HTML in new window</button>
+            <button (click)="submit()" type="submit" class="btn btn-secondary pull-right"
+                [disabled]="!readyToSubmit">Generate HTML in new window</button>
         </div>
     </form>
