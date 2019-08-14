@@ -32,6 +32,7 @@ export class AppComponent {
   public locations: any;
 
 
+
   public constructor() {
     this.companies = comapnyInfo;
     this.locations = locationsInfo;
