@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+/*.btn.active, .btn:active{
+    background-color:#DDD!important
+}*/
+
+.btn-secondary {
+    background: #DDD!important;
+    border:1px black solid;
+    border-radius:0;
+}
+
+ 
+.btn-secondary:active, .btn-secondary.active {
+    background: #f0a322!important;
+    box-shadow: none!important;
+    border:1px black solid;
+}
