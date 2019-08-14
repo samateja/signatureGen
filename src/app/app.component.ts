@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
 import comapnyInfo from '../data/companies.json';
 import locationsInfo from '../data/locations.json';
-import { environment } from '../environments/environment';
+import emailSuffixesInfo from '../data/emailSuffixes.json';
 
 @Component({
   selector: 'app-root',
@@ -36,23 +37,23 @@ export class AppComponent {
     { id: 2, name: 'SSC', imgUrl: 'logo_img_ssc.png', alt: 'Strategic Service Consulting' }
   ];
 
-  emailSuffixes: [
-    { id: 0, emailSuffix: 'Select Email' },
-    { id: 1, emailSuffix: '@anafee.com' },
-    { id: 2, emailSuffix: '@pmcs.de' },
-    { id: 3, emailSuffix: '@sabio.de' },
-    { id: 4, emailSuffix: '@serviceware.se' },
-    { id: 5, emailSuffix: '@strategic-sc.de' }
-  ];
+  // emailSuffixes: [
+  //   { id: 0, emailSuffix: 'Select Email' },
+  //   { id: 1, emailSuffix: '@anafee.com' },
+  //   { id: 2, emailSuffix: '@pmcs.de' },
+  //   { id: 3, emailSuffix: '@sabio.de' },
+  //   { id: 4, emailSuffix: '@serviceware.se' },
+  //   { id: 5, emailSuffix: '@strategic-sc.de' }
+  // ];
 
   public companies: any;
   public locations: any;
-
-
+  public emailSuffixes: any;
 
   public constructor() {
     this.companies = comapnyInfo;
     this.locations = locationsInfo;
+    this.emailSuffixes = emailSuffixesInfo;
     console.log('companies data::', this.locations);
   };
 

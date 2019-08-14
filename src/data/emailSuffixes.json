@@ -1,0 +1,29 @@
+{
+    "repeatSelect": "",
+    "emailSuffixes": [
+        {
+            "id": 0,
+            "emailSuffix": "Select Email"
+        },
+        {
+            "id": 1,
+            "emailSuffix": "@anafee.com"
+        },
+        {
+            "id": 2,
+            "emailSuffix": "@pmcs.de"
+        },
+        {
+            "id": 3,
+            "emailSuffix": "@sabio.de"
+        },
+        {
+            "id": 4,
+            "emailSuffix": "@serviceware.se"
+        },
+        {
+            "id": 5,
+            "emailSuffix": "@strategic-sc.de"
+        }
+    ]
+}
