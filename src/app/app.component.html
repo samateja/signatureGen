@@ -43,10 +43,13 @@
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
                 <div class="input-group">
-                    <input (click)="$event.target.select()" type="text" class="form-control" placeholder="Enter Email Address">
-                    <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1" style="cursor:pointer">
+                    <input (click)="$event.target.select()" type="text" class="form-control"
+                        placeholder="Enter Email Address">
+                    <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1"
+                        style="cursor:pointer">
                         <select class="input-group-addon-emaildropdown-select">
-                            <option value="Select Email" *ngFor="let item of emailSuffixes.emailSuffixes" value="{{item.id}}">
+                            <option value="Select Email" *ngFor="let item of emailSuffixes.emailSuffixes"
+                                value="{{item.id}}">
                                 {{ item.emailSuffix }}
                             </option>
                         </select>
@@ -54,19 +57,20 @@
                 </div>
             </fieldset>
             <!---------------------------------------------------------------------->
-            <fieldset class="col-md-4 form-group">
+            <fieldset class="col-md-5 form-group">
                 <label for="telNr">Telephone Number</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
-                    <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number">
+                    <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number"
+                        value={{finalTelephoneNum}}>
                 </div>
             </fieldset>
-            <fieldset class="col-md-4 form-group">
+            <fieldset class="col-md-5 form-group">
                 <label for="telNr">Mobile Number</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
                     <input (click)="$event.target.select()" type="text" class="form-control" id="mobileNr"
-                        placeholder="Enter Mobile Number">
+                        placeholder="Enter Mobile Number" value={{mobileNr}}>
                 </div>
             </fieldset>
 
@@ -84,20 +88,6 @@
                 </div>
             </fieldset>
 
-            <fieldset class="col-md-2 form-group">
-                <label for="linkLang">Why Serviceware</label>
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;"
-                        (click)="langGer = true">
-                        <input type="radio" />DE
-                    </label>
-                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;"
-                        (click)="langGer = false">
-                        <input type="radio" checked />EN
-                    </label>
-                </div>
-            </fieldset>
-
             <fieldset style="display:none;" class="col-md-6 form-group">
                 <label for="logoSelection">Logo</label>
                 <select class="form-control" name="logoList" id="logoList">
@@ -109,3 +99,49 @@
                 [disabled]="!readyToSubmit">Generate HTML in new window</button>
         </div>
     </form>
+
+    <h1 class="sg_title">Preview:</h1>
+    <div style="display:inline-block;user-select:none;">
+        <div id="name" style="font-size:12.0pt;font-family:'Source Sans Pro',sans-serif;color:#2F3E48;">
+            {{firstName}} {{lastName}}
+        </div>
+        <div id="position" style="font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;color:#2F3E48;">
+            {{position}}
+        </div>
+        <div style="display:inline-block;border:none;padding:0in 15.0pt 10pt 0in;font-family:'Source Sans Pro',sans-serif;"
+            id="pmcsLogo">
+            <img style="vertical-align:baseline;" alt="{{selectedLogo.alt}}" src="{{selectedLogo.imgUrl}}" />
+        </div>
+        <div id="moreInfo" style="display:flex;align-items:center;">
+            <div style="display:inline-block;border:none;border-right:solid #0082BB 2px;padding:0in 15.0pt 0in 0pt;font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;"
+                id="companyAdress">
+                {{completeCompany.name}}<br>
+                {{completeLocation.street}}<br>
+                {{completeLocation.address1}}<br />
+                <div ng-show="completeLocation.address2 != undefined">{{completeLocation.address2}}</div>
+                {{completeCompany.website}}
+            </div>
+            <div style="display:inline-block;padding:0in 0in 0in 15.0pt;font-family:'Source Sans Pro',sans-serif;"
+                id="personInfo">
+                <a href="mailto:{{emailPrefix}}{{selectedEmailSuffix}}">{{emailPrefix}}{{selectedEmailSuffix}}</a>
+                <div ng-show="finalTelephoneNum != ''">Tel. &#43;{{finalTelephoneNum}}</div>
+                <div ng-show="mobileNr != ''">Mob. &#43;{{mobileNr}}</div>
+                <div ng-show="showSupportNum && completeCompany.supportNum != ''">Support:
+                    &#43;{{completeCompany.supportNum}}</div>
+            </div>
+        </div>
+        <p class="MsoNormal">
+            <span lang="EN-GB"
+                style="font-size:8.5pt;font-family:'Source Sans Pro',sans-serif;color:#A0A0A0;mso-fareast-language:EN-GB">{{completeCompany.imprints[0]}}<br /></span>
+            <span lang="EN-GB"
+                style="font-size:8.5pt;font-family:'Source Sans Pro',sans-serif;color:#A0A0A0;mso-fareast-language:EN-GB">{{completeCompany.imprints[1]}}<br /></span>
+            <span lang="EN-GB"
+                style="font-size:8.5pt;font-family:'Source Sans Pro',sans-serif;color:#A0A0A0;mso-fareast-language:EN-GB">{{completeCompany.imprints[2]}}<br /></span>
+            <span lang="EN-GB"
+                style="font-size:8.5pt;font-family:'Source Sans Pro',sans-serif;color:#A0A0A0;mso-fareast-language:EN-GB">{{completeCompany.imprints[3]}}<br /></span>
+            <span lang="EN-GB"
+                style="font-size:8.5pt;font-family:'Source Sans Pro',sans-serif;color:#A0A0A0;mso-fareast-language:EN-GB">{{completeCompany.imprints[4]}}</span>
+        </p>
+    </div>
+</div>
+<img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />
