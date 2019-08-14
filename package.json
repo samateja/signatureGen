@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-	"build": "npm run build:dev",
+    "build": "npm run build:dev",
     "build:dev": "npm run ng:bump-version:dev && ng build",
-	"build:prod": "npm run ng:bump-version:prod && ng build --prod",
+    "build:prod": "npm run ng:bump-version:prod && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-	"ng:bump-version:dev":"gulp ng-bump-version --configuration=staging",
-	"ng:bump-version:prod":"gulp ng-bump-version --configuration=prod"
+    "ng:bump-version:dev": "gulp ng-bump-version --configuration=staging",
+    "ng:bump-version:prod": "gulp ng-bump-version --configuration=prod"
   },
   "private": true,
   "dependencies": {

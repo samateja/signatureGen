@@ -10,38 +10,40 @@
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
                 <select class="form-control" name="companyList" id="companyList">
-                    <option *ngFor="let company of companies.companies " value="{{company.id}}">{{company.name}}
+                    <option *ngFor="let company of companies.companies " value="{{company.id}}">
+                        {{company.name}}
                     </option>
                 </select>
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="location">Select Location</label>
                 <select class="form-control" name="locationList" id="locationList">
-                    <option *ngFor="let location of locations.locations" value="{{location.id}}">{{location.town}}
+                    <option *ngFor="let location of locations.locations" value="{{location.id}}">
+                        {{location.town}}
                     </option>
                 </select>
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="position">Position</label>
-                <input (click)="this.select();" type="text" class="form-control" id="position"
+                <input (click)="$event.target.select()" type="text" class="form-control" id="position"
                     placeholder="Enter Position">
             </fieldset>
 
             <!---------------------------------------------------------------------->
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">First Name</label>
-                <input (click)="this.select();" type="text" class="form-control" id="firstName"
+                <input (click)="$event.target.select()" type="text" class="form-control" id="firstName"
                     placeholder="Enter First Name">
             </fieldset>
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">Last Name</label>
-                <input (click)="this.select();" type="text" class="form-control" id="lastName"
+                <input (click)="$event.target.select()" type="text" class="form-control" id="lastName"
                     placeholder="Enter Last Name">
             </fieldset>
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
                 <div class="input-group">
-                    <input (click)="this.select();" type="text" class="form-control" placeholder="Enter Email Address">
+                    <input (click)="$event.target.select()" type="text" class="form-control" placeholder="Enter Email Address">
                     <span class="input-group-addon" id="basic-addon1" style="cursor:pointer">
                         <select *ngFor="let item of emailSuffixes">
                             <option value="Select Email" selected></option>
@@ -61,7 +63,7 @@
                 <label for="telNr">Mobile Number</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
-                    <input (click)="this.select();" type="text" class="form-control" id="mobileNr"
+                    <input (click)="$event.target.select()" type="text" class="form-control" id="mobileNr"
                         placeholder="Enter Mobile Number">
                 </div>
             </fieldset>
