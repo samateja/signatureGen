@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import comapnyInfo from '../data/companies.json';
+import companyInfo from '../data/companies.json';
 import locationsInfo from '../data/locations.json';
 import emailSuffixesInfo from '../data/emailSuffixes.json';
-import { CompleteCompany, CompleteLocation, Logo } from "../app/models/general.model";
+import { CompleteCompany, CompleteLocation, Logo } from '../app/models/general.model';
 
 @Component({
     selector: 'app-root',
@@ -34,21 +34,19 @@ export class AppComponent implements OnInit {
     selectedEmailSuffix = '';
     readyToSubmit = false;
 
-    logos: [
+    logos = [
         { id: 0, name: 'Serviceware SE', imgUrl: '../assets/images/logo_img_ServicewareSE.PNG', alt: 'Serviceware SE' },
         { id: 1, name: 'PMCS - A SERVICEWARE COMPANY', imgUrl: '../assets/images/logo_img_PMCS.PNG', alt: 'PMCS' },
         { id: 2, name: 'SSC', imgUrl: '../assets/images/logo_img_ssc.png', alt: 'Strategic Service Consulting' }
     ];
 
     public companies: any;
-    // public locations: CompleteLocation[];
     public locations: any;
     public emailSuffixes: any;
 
     public constructor() {
-        this.companies = comapnyInfo;
+        this.companies = this.fillCompaniesList(companyInfo);
         this.locations = this.fillLocationsList(locationsInfo);
-        // this.locations = locationsInfo;
         this.emailSuffixes = emailSuffixesInfo;
     }
 
@@ -56,50 +54,66 @@ export class AppComponent implements OnInit {
         // this.version = environment.version; // <-- Consume the version number from environment!
         this.version = '2.0.0';
         this.selectedLogo = new Logo(-1, 'Serviceware SE', '../assets/images/logo_img_ServicewareSE.PNG', 'Serviceware SE');
-        this.locations
     }
 
-    fillLocationsList(locationsInfo: any): CompleteLocation[] {
-        let locationList: CompleteLocation[] = Array.from(locationsInfo.locations);
-        let finalLocationList: CompleteLocation[] = [];
-        for (let location of locationList) {
-            let currentLocation = new CompleteLocation(location.town, location.street, location.address1, location.address2, location.telephoneNum, location.finalTelephoneNum);
+    fillLocationsList(locationsJson: any): CompleteLocation[] {
+        const locationList: CompleteLocation[] = Array.from(locationsJson.locations);
+        const finalLocationList: CompleteLocation[] = [];
+        for (const location of locationList) {
+            const currentLocation = new CompleteLocation(
+                location.town,
+                location.street,
+                location.address1,
+                location.address2,
+                location.telephoneNum,
+                location.finalTelephoneNum
+            );
             finalLocationList.push(currentLocation);
         }
 
         return finalLocationList;
     }
 
-    getCompleteCompany(): CompleteCompany {
+    fillCompaniesList(companiesJson: any): CompleteCompany[] {
+        const companyList: CompleteCompany[] = Array.from(companiesJson.companies);
+        const finalCompanyList: CompleteCompany[] = [];
+        for (const company of companyList) {
+            const currentCompany = new CompleteCompany(company.name, company.website, company.supportNum, company.imprints);
+            finalCompanyList.push(currentCompany);
+        }
+
+        return finalCompanyList;
+    }
+
+    getCompleteCompany(value: any): CompleteCompany {
+        value = value.target.selectedIndex;
         const completeCompany = this.completeCompany;
-        for (let i = 0; i < this.companies.companies.length; i++) {
-            if (this.companies.repeatSelect == i) {
-                completeCompany.name = this.companies.companies[i].name;
 
-                if (this.selectedEmailSuffix == "Select Email") {
-                    completeCompany.website = "";
-                } else {
-                    if (this.selectedEmailSuffix != null) {
-                        var websiteString = this.selectedEmailSuffix.substring(1);
-                        websiteString = "www." + websiteString;
-                        completeCompany.website = websiteString;
-                    }
-                }
-
-                completeCompany.supportNum = this.companies.companies[i].supportNum;
-                var imprintCount = this.companies.companies[i].imprints.length;
-                for (var j = 0; j < imprintCount; j++) {
-                    completeCompany.imprints[j] = this.companies.companies[i].imprints[j].text;
-                }
-                if (imprintCount == 3) {
-                    completeCompany.imprints[3] = "";
-                    completeCompany.imprints[4] = "";
-                }
-                if (imprintCount == 4) {
-                    completeCompany.imprints[4] = "";
-                }
+        completeCompany.name = this.companies[value].name;
+        if (this.selectedEmailSuffix === 'Select Email') {
+            completeCompany.website = '';
+        } else {
+            if (this.selectedEmailSuffix !== null) {
+                let websiteString = this.selectedEmailSuffix.substring(1);
+                websiteString = 'www.' + websiteString;
+                completeCompany.website = websiteString;
             }
         }
+
+        completeCompany.supportNum = this.companies[value].supportNum;
+        const imprintCount = this.companies[value].imprints.length;
+
+        for (var j = 0; j < imprintCount; j++) {
+            completeCompany.imprints[j] = this.companies[value].imprints[j].text;
+        }
+        if (imprintCount === 3) {
+            completeCompany.imprints[3] = '';
+            completeCompany.imprints[4] = '';
+        }
+        if (imprintCount === 4) {
+            completeCompany.imprints[4] = '';
+        }
+
         return completeCompany;
     }
 
@@ -123,8 +137,8 @@ export class AppComponent implements OnInit {
         return completeLocation;
     }
 
-    updateEmailSuffix(): void {
-        this.getCompleteCompany();
+    updateEmailSuffix(value: any): void {
+        this.getCompleteCompany(value);
     }
 
     updateLocation(value: any): void {
@@ -132,18 +146,17 @@ export class AppComponent implements OnInit {
         this.finalTelephoneNum = this.currentTelNum;
     }
 
-    updateCompany(): void {
-        this.completeCompany = this.getCompleteCompany();
+    updateCompany(value: any): void {
+        this.completeCompany = this.getCompleteCompany(value);
         this.updateLogo(this.completeCompany.name);
     }
 
     updateLogo(compName: string): void {
-        var selectedLogo: Logo = this.selectedLogo;
-        var i = 0;
-        if (compName == "Strategic Service Consulting GmbH") {
+        const selectedLogo: Logo = this.selectedLogo;
+        let i = 0;
+        if (compName === 'Strategic Service Consulting GmbH') {
             i = 1;
-        }
-        else if (compName == "cubus AG - A Serviceware Company") {
+        } else if (compName === 'cubus AG - A Serviceware Company') {
             i = 2;
         }
 
@@ -158,18 +171,17 @@ export class AppComponent implements OnInit {
 
     }
 
-    onChange(Event): void {
+    onChange(): void {
         console.log(this.firstName);
-        if (this.firstName != ''
-            && this.lastName != ''
+        if (this.firstName !== ''
+            && this.lastName !== ''
             // && this.company != ''
             // && this.town != ''
-            && this.currentTelNum != ''
-            && this.selectedEmailSuffix != null
-            && this.selectedEmailSuffix != "Select Email") {
+            && this.currentTelNum !== ''
+            && this.selectedEmailSuffix !== null
+            && this.selectedEmailSuffix !== 'Select Email') {
             this.readyToSubmit = true;
-        }
-        else {
+        } else {
             this.readyToSubmit = false;
         }
     }

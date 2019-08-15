@@ -21,6 +21,13 @@ export class CompleteCompany {
     website: string;
     supportNum: string;
     imprints: Array<string>;
+
+    constructor(name: string, website: string, supportNum: string, imprints: Array<string>) {
+        this.name = name;
+        this.website = website;
+        this.supportNum = supportNum;
+        this.imprints = imprints;
+    }
 }
 
 

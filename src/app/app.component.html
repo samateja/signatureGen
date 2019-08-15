@@ -9,8 +9,8 @@
         <div class="input-group">
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
-                <select class="form-control" name="companyList" id="companyList" (change)="updateCompany()">
-                    <option *ngFor="let company of companies.companies " value="{{company.id}}">
+                <select class="form-control" name="companyList" id="companyList" (change)="updateCompany($event)">
+                    <option *ngFor="let company of companies " value="{{company.id}}">
                         {{company.name}}
                     </option>
                 </select>
