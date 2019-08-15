@@ -1,17 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
-/*.btn.active, .btn:active{
-    background-color:#DDD!important
-}*/
-
-.btn-secondary {
-    background: #DDD!important;
-    border:1px black solid;
-    border-radius:0;
+.btnGenerateHTML {
+    background: #FF8300!important;
 }
 
+.btn[disabled] {
+    background: #DADADA!important;
+    color: #A0A0A0;
+}
+
+.btn-secondary {
+    background: #0082bb;
+    color: #FFFFFF;
+    border:0px;
+    border-radius:50px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
  
 .btn-secondary:active, .btn-secondary.active {
-    background: #f0a322!important;
+    background: #FF8300!important;
     box-shadow: none!important;
-    border:1px black solid;
+    border:0px;
+}
+
+.btn:hover {
+    color: #DFEAED;
+}
+
+.btnGrpSupNum {
+    display: flex;
+}
+
+.btnSupNum {
+    flex: 0.5;
+}
+
+.main {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sg_title {
+    color: #0082bb;
+}
+
+body {
+    color: #2e3f48;
+}
+
+.form-control {
+    border: 0;
+}
+
+.input-group-addon {
+    border: 0;
+    background: #dadada;
+}
+
+.input-group-addon-emaildropdown {
+    background: #dadada;
+}
+
+.input-group-addon-emaildropdown-select {
+    border: 0;
+    background: #dadada;
+    cursor: pointer;
+}
+
+.btn-default {
+    background-image: none;
+}
+
+.btn-primary {
+    background-image: none;
 }

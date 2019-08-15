@@ -1,11 +1,11 @@
-<div class="main" style="width:80%; display:block; margin-left: auto; margin-right: auto;">
+<div class="main" style="width:50%; display:block; margin-left: auto; margin-right: auto;">
     <div class="header">
-        <h1>Serviceware SE Email Signature Generator</h1>
+        <h1 class="sg_title">Serviceware SE Email Signature Generator</h1>
         <div style="color: #A0A0A0; margin-bottom:10px;">Version {{version}} </div>
         Please enter your details below. Your signature files will be generated automatically.<br /><br />
     </div>
 
-    <form class="well" style="width:1000px;">
+    <form>
         <div class="input-group">
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
@@ -70,33 +70,29 @@
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
                     <input (click)="$event.target.select()" type="text" class="form-control" id="mobileNr"
-                        placeholder="Enter Mobile Number" value={{mobileNr}}>
+                        placeholder="Enter Mobile Number" [(ngModel)]="mobileNr">
                 </div>
             </fieldset>
 
             <fieldset class="col-md-2 form-group">
                 <label for="supportNr">Support Number?</label>
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-secondary" style="border:1px black solid;background-color:white;"
-                        (click)="showSupportNum = true">
+                <div class="btn-group btnGrpSupNum" data-toggle="buttons">
+                    <label class="btn btn-secondary btnSupNum" (click)="showSupportNum = true">
                         <input type="radio" />Yes
                     </label>
-                    <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;"
-                        (click)="showSupportNum = false">
+                    <label class="btn btn-secondary active btnSupNum" (click)="showSupportNum = false">
                         <input type="radio" checked />No
                     </label>
                 </div>
             </fieldset>
 
-            <fieldset style="display:none;" class="col-md-6 form-group">
-                <label for="logoSelection">Logo</label>
-                <select class="form-control" name="logoList" id="logoList">
-                    <option *ngFor="let logo of logos" value="{{logo.id}}">{{logo.name}}</option>
-                </select>
+            <fieldset class="col-md-2 col-md-offset-10 form-group">
+                <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
+                    [disabled]="!readyToSubmit">Generate HTML in new window</button>
             </fieldset>
 
-            <button (click)="submit()" type="submit" class="btn btn-secondary pull-right"
-                [disabled]="!readyToSubmit">Generate HTML in new window</button>
+            <!-- <button (click)="submit()" type="submit" class="btn btn-secondary pull-right"
+                [disabled]="!readyToSubmit">Generate HTML in new window</button> -->
         </div>
     </form>
 
@@ -124,9 +120,9 @@
             <div style="display:inline-block;padding:0in 0in 0in 15.0pt;font-family:'Source Sans Pro',sans-serif;"
                 id="personInfo">
                 <a href="mailto:{{emailPrefix}}{{selectedEmailSuffix}}">{{emailPrefix}}{{selectedEmailSuffix}}</a>
-                <div ng-show="finalTelephoneNum != ''">Tel. &#43;{{finalTelephoneNum}}</div>
-                <div ng-show="mobileNr != ''">Mob. &#43;{{mobileNr}}</div>
-                <div ng-show="showSupportNum && completeCompany.supportNum != ''">Support:
+                <div [hidden]="finalTelephoneNum === ''">Tel. &#43;{{finalTelephoneNum}}</div>
+                <div [hidden]="mobileNr === ''">Mob. &#43;{{mobileNr}}</div>
+                <div [hidden]="showSupportNum && completeCompany.supportNum != ''">Support:
                     &#43;{{completeCompany.supportNum}}</div>
             </div>
         </div>
