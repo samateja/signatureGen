@@ -1,5 +1,4 @@
 {
-    "repeatSelect": "",
     "locations": [
         {
             "id": 0,
@@ -30,6 +29,13 @@
             "address1": "D-10117 Berlin"
         },
         {
+            "id": 12,
+            "town": "Darmstadt",
+            "telephoneNum": "49 (40) 851927-",
+            "street": "Berliner Allee 47",
+            "address1": "D-64295 Darmstadt"
+        },
+        {
             "id": 4,
             "town": "Hamburg",
             "telephoneNum": "49 (40) 851927-",
@@ -45,7 +51,7 @@
         },
         {
             "id": 6,
-            "town": "Leiden", 
+            "town": "Leiden",
             "telephoneNum": "31 (0) 71 523 26-04",
             "street": "Dellaertweg 9 C",
             "address1": "NL-2316 WZ Leiden"
@@ -85,13 +91,6 @@
             "telephoneNum": "43 (1) 715 4180-",
             "street": "Karl-Farkas-Gasse 22 / Top 1b / 15",
             "address1": "AT-1030 Wien"
-        },
-        {
-            "id": 12,
-            "town": "Darmstadt",
-            "telephoneNum": "49 (40) 851927-",
-            "street": "Berliner Allee 47",
-            "address1": "D-64295 Darmstadt"
         }
     ]
 }

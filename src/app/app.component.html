@@ -9,7 +9,7 @@
         <div class="input-group">
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
-                <select class="form-control" name="companyList" id="companyList">
+                <select class="form-control" name="companyList" id="companyList" (change)="updateCompany()">
                     <option *ngFor="let company of companies.companies " value="{{company.id}}">
                         {{company.name}}
                     </option>
@@ -17,8 +17,8 @@
             </fieldset>
             <fieldset class="col-md-4 form-group">
                 <label for="location">Select Location</label>
-                <select class="form-control" name="locationList" id="locationList">
-                    <option *ngFor="let location of locations.locations" value="{{location.id}}">
+                <select class="form-control" name="locationList" id="locationList" (change)="updateLocation($event)">
+                    <option *ngFor="let location of locations" value="{{location.id}}">
                         {{location.town}}
                     </option>
                 </select>
@@ -26,19 +26,19 @@
             <fieldset class="col-md-4 form-group">
                 <label for="position">Position</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="position"
-                    placeholder="Enter Position" [(ngModel)]="position" name="position">
+                    placeholder="Enter Position" [(ngModel)]="position" name="position" (keyup)="onChange($event)">
             </fieldset>
 
             <!---------------------------------------------------------------------->
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">First Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="firstName"
-                    placeholder="Enter First Name" [(ngModel)]="firstName" name="firstName">
+                    placeholder="Enter First Name" [(ngModel)]="firstName" name="firstName" (keyup)="onChange($event)">
             </fieldset>
             <fieldset class="col-md-3 form-group">
                 <label for="lastName">Last Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="lastName"
-                    placeholder="Enter Last Name" [(ngModel)]="lastName" name="lastName">
+                    placeholder="Enter Last Name" [(ngModel)]="lastName" name="lastName" (keyup)="onChange($event)">
             </fieldset>
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
@@ -47,7 +47,8 @@
                         placeholder="Enter Email Address" [(ngModel)]="emailPrefix" name="emailPrefix">
                     <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1"
                         style="cursor:pointer">
-                        <select class="input-group-addon-emaildropdown-select">
+                        <select class="input-group-addon-emaildropdown-select" [(ngModel)]="selectedEmailSuffix"
+                            name="selectedEmailSuffix">
                             <option value="Select Email" *ngFor="let item of emailSuffixes.emailSuffixes"
                                 value="{{item.id}}">
                                 {{ item.emailSuffix }}
@@ -70,7 +71,7 @@
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
                     <input (click)="$event.target.select()" type="text" class="form-control" id="mobileNr"
-                        placeholder="Enter Mobile Number" [(ngModel)]="mobileNr">
+                        placeholder="Enter Mobile Number" [(ngModel)]="mobileNr" name="mobileNr">
                 </div>
             </fieldset>
 
@@ -90,9 +91,6 @@
                 <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
                     [disabled]="!readyToSubmit">Generate HTML in new window</button>
             </fieldset>
-
-            <!-- <button (click)="submit()" type="submit" class="btn btn-secondary pull-right"
-                [disabled]="!readyToSubmit">Generate HTML in new window</button> -->
         </div>
     </form>
 
