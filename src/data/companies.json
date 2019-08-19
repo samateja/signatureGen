@@ -1,72 +1,295 @@
-   { 
+{
     "repeatSelect": "",
     "companies": [
-        { "id": 0, "name": "helpLine CLM AG - A Serviceware Company", "supportNum": "49 (0) 6434 9450-333", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "helpLine CLM AG"},
-            {"id": 1, "text": "Hauptniederlassung Haldenstraße 5, 6340 Baar"},
-            {"id": 2, "text": "Geschäftsführer: Dirk K. Martin, Josef Weber"}
-        ]},
-        { "id": 1, "name": "PMCS GmbH & Co. KG - A Serviceware Company", "supportNum": "49 (0) 6434 9450-200", "old_website": "www.pmcs.de", "imprints": [
-            {"id": 0, "text": "PM Computer Services GmbH & Co. KG"},
-            {"id": 1, "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"},
-            {"id": 2, "text": "Geschäftsführer: Dirk K. Martin, Dr. Alexander Becker"},
-            {"id": 3, "text": "Amtsgericht Limburg HRA 938"}
-        ]},
-        { "id": 2, "name": "helpLine GmbH - A Serviceware Company", "supportNum": "49 (0) 6434 9450-333", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "helpLine GmbH"},
-            {"id": 1, "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"},
-            {"id": 2, "text": "Geschäftsführer: Dirk K. Martin, Dr. Alexander Becker"},
-            {"id": 3, "text": "Amtsgericht Limburg HRB 3627"}
-        ]},
-        { "id": 3, "name": "Strategic Service Consulting GmbH", "supportNum": "", "old_website": "www.strategic-sc.de", "imprints": [
-            {"id": 0, "text": "Strategic Service Consulting GmbH"},
-            {"id": 1, "text": "Hauptniederlassung Friedrichstraße 95, 10117 Berlin"},
-            {"id": 2, "text": "Geschäftsführer: Dr. Florian Meister, Dirk K. Martin"},
-            {"id": 3, "text": "Amtsgericht Charlottenburg HRB 139812 B"}
-        ]},
-        { "id": 4, "name": "helpLine rd GmbH - A Serviceware Company", "supportNum": "", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "helpLine rd GmbH"},
-            {"id": 1, "text": "Hauptniederlassung Kalscheurener Str. 2a, 50354 Hürth"},
-            {"id": 2, "text": "Geschäftsführer: Dirk K. Martin"},
-            {"id": 3, "text": "Amtsgericht Köln HRB 67727"}
-        ]},
-        { "id": 5, "name": "helpLine B.V. - A Serviceware Company", "supportNum": "31 (0) 71/523 26 04", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "helpLine B.V"},
-            {"id": 1, "text": "Registered office: Le'id'en"},
-            {"id": 2, "text": "Represented by: Hereward Burgers, Roderick Schipper, Dirk K. Martin"},
-            {"id": 3, "text": "KvK nr. 27251004"}
-        ]},
-        { "id": 6, "name": "Catenic AG - A Serviceware Company", "supportNum": "49 (0) 6434 9450-333", "old_website": "www.anafee.com", "imprints": [
-            {"id": 0, "text": "Catenic AG"},
-            {"id": 1, "text": "Hauptniederlassung Hauptstraße 1, 82008 Unterhaching"},
-            {"id": 2, "text": "Vorstand: Dirk K. Martin (Vorsitzender), Bernd Worlitzer, Dr. Alexander Becker"},
-            {"id": 3, "text": "Aufsichtsratsvorsitzender: Harald Popp"},
-            {"id": 4, "text": "Amtsgericht München HRB 137 781"}
-        ]},
-        { "id": 7, "name": "helpLine IT solutions GmbH - A Serviceware Company", "supportNum": "49 (0) 6434 9450-333", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "helpLine IT solutions GmbH"},
-            {"id": 1, "text": "Hauptniederlassung Karl-Farkas-Gasse 22 / Top 1b / 15, 1030 Wien"},
-            {"id": 2, "text": "Geschäftsführer: Dirk K. Martin, Wolfgang Schwed"},
-            {"id": 3, "text": "Amtsgericht Wien 2/20; FN:250726 s HG Wien"}
-        ]},
-        { "id": 8, "name": "PMCS.helpLine Software S.L. - A Serviceware Company", "supportNum": "", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "PMCS.helpLine Software S.L."},
-            {"id": 1, "text": "Registered office: Carrer Gremi de Sabaters 21, Local A21, 07009 Palma de Mallorca - Baleares"},
-            {"id": 2, "text": "Represented by: Dirk K. Martin"},
-            {"id": 3, "text": "Commercial Register: Palma de Mallorca B16534109 (NIF)"}
-        ]},
-        { "id": 9, "name": "Serviceware SE", "supportNum": "49 (0) 6434 9450-333", "old_website": "www.serviceware.se", "imprints": [
-            {"id": 0, "text": "Serviceware SE"},
-            {"id": 1, "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"},
-            {"id": 2, "text": "Geschäftsführende Direktoren: Dirk K. Martin (CEO), Harald Popp (CFO), Dr. Alexander Becker (COO)"},
-            {"id": 3, "text": "Verwaltungsrat: Christoph Debus (Vorsitzender), Harald Popp (stellv. Vorsitzender), Ingo Bollhöfer"},
-            {"id": 4, "text": "Amtsgericht Limburg HRB 5894"}
-        ]},
-        { "id": 10, "name": "Sabio GmbH", "supportNum": "", "imprints": [
-            {"id": 0, "text": "Sabio GmbH"},
-            {"id": 1, "text": "Hauptniederlassung Schützenstraße 5, 22761 Hamburg"},
-            {"id": 2, "text": "Geschäftsführer: Alexander Holtappels, Constantin Gaul, Dirk K. Martin"},
-            {"id": 3, "text": "Amtsgericht Hamburg HRB 112237"}
-        ]}
+        {
+            "id": 0,
+            "name": "helpLine CLM AG - A Serviceware Company",
+            "supportNum": "49 (0) 6434 9450-333",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "helpLine CLM AG"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Haldenstraße 5, 6340 Baar"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dirk K. Martin, Josef Weber"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "PMCS GmbH & Co. KG - A Serviceware Company",
+            "supportNum": "49 (0) 6434 9450-200",
+            "old_website": "www.pmcs.de",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "PM Computer Services GmbH & Co. KG"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dirk K. Martin, Dr. Alexander Becker"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Limburg HRA 938"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "helpLine GmbH - A Serviceware Company",
+            "supportNum": "49 (0) 6434 9450-333",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "helpLine GmbH"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dirk K. Martin, Dr. Alexander Becker"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Limburg HRB 3627"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Strategic Service Consulting GmbH",
+            "supportNum": "",
+            "old_website": "www.strategic-sc.de",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "Strategic Service Consulting GmbH"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Friedrichstraße 95, 10117 Berlin"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dr. Florian Meister, Dirk K. Martin"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Charlottenburg HRB 139812 B"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "helpLine rd GmbH - A Serviceware Company",
+            "supportNum": "",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "helpLine rd GmbH"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Kalscheurener Str. 2a, 50354 Hürth"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dirk K. Martin"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Köln HRB 67727"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "helpLine B.V. - A Serviceware Company",
+            "supportNum": "31 (0) 71/523 26 04",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "helpLine B.V"
+                },
+                {
+                    "id": 1,
+                    "text": "Registered office: Le'id'en"
+                },
+                {
+                    "id": 2,
+                    "text": "Represented by: Hereward Burgers, Roderick Schipper, Dirk K. Martin"
+                },
+                {
+                    "id": 3,
+                    "text": "KvK nr. 27251004"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Catenic AG - A Serviceware Company",
+            "supportNum": "49 (0) 6434 9450-333",
+            "old_website": "www.anafee.com",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "Catenic AG"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Hauptstraße 1, 82008 Unterhaching"
+                },
+                {
+                    "id": 2,
+                    "text": "Vorstand: Dirk K. Martin (Vorsitzender), Bernd Worlitzer, Dr. Alexander Becker"
+                },
+                {
+                    "id": 3,
+                    "text": "Aufsichtsratsvorsitzender: Harald Popp"
+                },
+                {
+                    "id": 4,
+                    "text": "Amtsgericht München HRB 137 781"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "name": "helpLine IT solutions GmbH - A Serviceware Company",
+            "supportNum": "49 (0) 6434 9450-333",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "helpLine IT solutions GmbH"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Karl-Farkas-Gasse 22 / Top 1b / 15, 1030 Wien"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Dirk K. Martin, Wolfgang Schwed"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Wien 2/20; FN:250726 s HG Wien"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "name": "PMCS.helpLine Software S.L. - A Serviceware Company",
+            "supportNum": "",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "PMCS.helpLine Software S.L."
+                },
+                {
+                    "id": 1,
+                    "text": "Registered office: Carrer Gremi de Sabaters 21, Local A21, 07009 Palma de Mallorca - Baleares"
+                },
+                {
+                    "id": 2,
+                    "text": "Represented by: Dirk K. Martin"
+                },
+                {
+                    "id": 3,
+                    "text": "Commercial Register: Palma de Mallorca B16534109 (NIF)"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Serviceware SE",
+            "supportNum": "49 (0) 6434 9450-333",
+            "old_website": "www.serviceware.se",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "Serviceware SE"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Carl-Zeiss-Straße 16, 65520 Bad Camberg"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführende Direktoren: Dirk K. Martin (CEO), Harald Popp (CFO), Dr. Alexander Becker (COO)"
+                },
+                {
+                    "id": 3,
+                    "text": "Verwaltungsrat: Christoph Debus (Vorsitzender), Harald Popp (stellv. Vorsitzender), Ingo Bollhöfer"
+                },
+                {
+                    "id": 4,
+                    "text": "Amtsgericht Limburg HRB 5894"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Sabio GmbH",
+            "supportNum": "",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "Sabio GmbH"
+                },
+                {
+                    "id": 1,
+                    "text": "Hauptniederlassung Schützenstraße 5, 22761 Hamburg"
+                },
+                {
+                    "id": 2,
+                    "text": "Geschäftsführer: Alexander Holtappels, Constantin Gaul, Dirk K. Martin"
+                },
+                {
+                    "id": 3,
+                    "text": "Amtsgericht Hamburg HRB 112237"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "name": "cubus AG - A Serviceware Company",
+            "supportNum": "",
+            "imprints": [
+                {
+                    "id": 0,
+                    "text": "cubus AG"
+                },
+                {
+                    "id": 1,
+                    "text": "Registered office: Herrenberg"
+                },
+                {
+                    "id": 2,
+                    "text": "Managing Board: Dirk K. Martin, Harald Matzke, Thomas Volz"
+                },
+                {
+                    "id": 3,
+                    "text": "HRB 244892"
+                }
+            ]
+        }
     ]
 }

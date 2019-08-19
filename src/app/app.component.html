@@ -47,10 +47,9 @@
                         placeholder="Enter Email Address" [(ngModel)]="emailPrefix" name="emailPrefix">
                     <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1"
                         style="cursor:pointer">
-                        <select class="input-group-addon-emaildropdown-select" [(ngModel)]="selectedEmailSuffix"
-                            name="selectedEmailSuffix">
-                            <option value="Select Email" *ngFor="let item of emailSuffixes.emailSuffixes"
-                                value="{{item.id}}">
+                        <select class="input-group-addon-emaildropdown-select" name="selectedEmailSuffix"
+                            (change)="updateEmailSuffix($event)">
+                            <option *ngFor="let item of emailSuffixes.emailSuffixes" value="{{item.id}}">
                                 {{ item.emailSuffix }}
                             </option>
                         </select>
@@ -63,7 +62,7 @@
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">+</span>
                     <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number"
-                        value={{finalTelephoneNum}}>
+                        (keyup)="updatePhoneNumber()" [(ngModel)]="finalTelephoneNum" name="finalTelephoneNum">
                 </div>
             </fieldset>
             <fieldset class="col-md-5 form-group">
@@ -97,8 +96,7 @@
     <h1 class="sg_title">Preview:</h1>
     <div style="display:inline-block;user-select:none;">
         <div id="name" style="font-size:12.0pt;font-family:'Source Sans Pro',sans-serif;color: #2F3E48;">
-            {{firstName}} {{lastName}}
-        </div>
+            {{firstName}} {{lastName}} </div>
         <div id="position" style="font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;color: #2F3E48;">
             {{position}}
         </div>
@@ -120,7 +118,7 @@
                 <a href="mailto:{{emailPrefix}}{{selectedEmailSuffix}}">{{emailPrefix}}{{selectedEmailSuffix}}</a>
                 <div [hidden]="finalTelephoneNum === ''">Tel. &#43;{{finalTelephoneNum}}</div>
                 <div [hidden]="mobileNr === ''">Mob. &#43;{{mobileNr}}</div>
-                <div [hidden]="showSupportNum && completeCompany.supportNum != ''">Support:
+                <div [hidden]="!showSupportNum || completeCompany.supportNum === ''">Support:
                     &#43;{{completeCompany.supportNum}}</div>
             </div>
         </div>

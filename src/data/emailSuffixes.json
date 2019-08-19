@@ -11,18 +11,22 @@
         },
         {
             "id": 2,
-            "emailSuffix": "@pmcs.de"
+            "emailSuffix": "@cubus.eu"
         },
         {
             "id": 3,
-            "emailSuffix": "@sabio.de"
+            "emailSuffix": "@pmcs.de"
         },
         {
             "id": 4,
-            "emailSuffix": "@serviceware.se"
+            "emailSuffix": "@sabio.de"
         },
         {
             "id": 5,
+            "emailSuffix": "@serviceware.se"
+        },
+        {
+            "id": 6,
             "emailSuffix": "@strategic-sc.de"
         }
     ]

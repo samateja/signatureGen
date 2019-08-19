@@ -4,6 +4,7 @@ import companyInfo from '../data/companies.json';
 import locationsInfo from '../data/locations.json';
 import emailSuffixesInfo from '../data/emailSuffixes.json';
 import { CompleteCompany, CompleteLocation, Logo } from '../app/models/general.model';
+import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from 'constants';
 
 @Component({
     selector: 'app-root',
@@ -36,8 +37,8 @@ export class AppComponent implements OnInit {
 
     logos = [
         { id: 0, name: 'Serviceware SE', imgUrl: '../assets/images/logo_img_ServicewareSE.PNG', alt: 'Serviceware SE' },
-        { id: 1, name: 'PMCS - A SERVICEWARE COMPANY', imgUrl: '../assets/images/logo_img_PMCS.PNG', alt: 'PMCS' },
-        { id: 2, name: 'SSC', imgUrl: '../assets/images/logo_img_ssc.png', alt: 'Strategic Service Consulting' }
+        { id: 1, name: 'SSC', imgUrl: '../assets/images/logo_img_ssc.png', alt: 'Strategic Service Consulting' },
+        { id: 2, name: "cubus AG", imgUrl: "../assets/images/logo_img_cubus.png", alt: "cubus AG" }
     ];
 
     public companies: any;
@@ -82,6 +83,14 @@ export class AppComponent implements OnInit {
             finalCompanyList.push(currentCompany);
         }
 
+        finalCompanyList.sort(function (a, b) {
+            let compA = a.name.toLowerCase();
+            let compB = b.name.toLowerCase();
+            if (compA < compB) { return -1; }
+            if (compA > compB) { return 1; }
+            return 0;
+        })
+
         return finalCompanyList;
     }
 
@@ -90,15 +99,16 @@ export class AppComponent implements OnInit {
         const completeCompany = this.completeCompany;
 
         completeCompany.name = this.companies[value].name;
-        if (this.selectedEmailSuffix === 'Select Email') {
-            completeCompany.website = '';
-        } else {
-            if (this.selectedEmailSuffix !== null) {
-                let websiteString = this.selectedEmailSuffix.substring(1);
-                websiteString = 'www.' + websiteString;
-                completeCompany.website = websiteString;
-            }
-        }
+        // if (this.selectedEmailSuffix === 'Select Email') {
+        //     completeCompany.website = '';
+        // } else {
+        //     if (this.selectedEmailSuffix !== null) {
+        //         this.selectedEmailSuffix = this.emailSuffixes.emailSuffixes[value].emailSuffix;
+        //         let websiteString = this.selectedEmailSuffix.substring(1);
+        //         websiteString = 'www.' + websiteString;
+        //         completeCompany.website = websiteString;
+        //     }
+        // }
 
         completeCompany.supportNum = this.companies[value].supportNum;
         const imprintCount = this.companies[value].imprints.length;
@@ -138,7 +148,23 @@ export class AppComponent implements OnInit {
     }
 
     updateEmailSuffix(value: any): void {
-        this.getCompleteCompany(value);
+        value = value.target.selectedIndex;
+        this.selectedEmailSuffix = this.emailSuffixes.emailSuffixes[value].emailSuffix;
+        if (this.selectedEmailSuffix === 'Select Email') {
+            this.completeCompany.website = '';
+        } else {
+            if (this.selectedEmailSuffix !== null) {
+                let websiteString = this.selectedEmailSuffix.substring(1);
+                websiteString = 'www.' + websiteString;
+                this.completeCompany.website = websiteString;
+            }
+        }
+        this.onChange();
+    }
+
+    updatePhoneNumber(): void {
+        console.log(this.finalTelephoneNum);
+        this.onChange();
     }
 
     updateLocation(value: any): void {
@@ -172,11 +198,8 @@ export class AppComponent implements OnInit {
     }
 
     onChange(): void {
-        console.log(this.firstName);
         if (this.firstName !== ''
             && this.lastName !== ''
-            // && this.company != ''
-            // && this.town != ''
             && this.currentTelNum !== ''
             && this.selectedEmailSuffix !== null
             && this.selectedEmailSuffix !== 'Select Email') {
