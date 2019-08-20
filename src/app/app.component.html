@@ -10,6 +10,7 @@
             <fieldset class="col-md-4 form-group">
                 <label for="company">Select Company</label>
                 <select class="form-control" name="companyList" id="companyList" (change)="updateCompany($event)">
+                    <option [disabled]=true>Select company</option>
                     <option *ngFor="let company of companies " value="{{company.id}}">
                         {{company.name}}
                     </option>
@@ -18,6 +19,7 @@
             <fieldset class="col-md-4 form-group">
                 <label for="location">Select Location</label>
                 <select class="form-control" name="locationList" id="locationList" (change)="updateLocation($event)">
+                        <option [disabled]=true>Select Location</option>
                     <option *ngFor="let location of locations" value="{{location.id}}">
                         {{location.town}}
                     </option>
@@ -87,14 +89,15 @@
             </fieldset>
 
             <fieldset class="col-md-2 col-md-offset-10 form-group">
-                <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
-                    [disabled]="!readyToSubmit">Generate HTML in new window</button>
+                <button (click)="submit(generatePrievew)" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
+                    [disabled]="!readyToSubmit">Copy HTML to ClipBoard</button>
             </fieldset>
+            <!-- <input type="text" value="{{htmlData}}" /> -->
         </div>
     </form>
 
     <h1 class="sg_title">Preview:</h1>
-    <div style="display:inline-block;user-select:none;">
+    <div style="display:inline-block;user-select:none;" id="generateHtml">
         <div id="name" style="font-size:12.0pt;font-family:'Source Sans Pro',sans-serif;color: #2F3E48;">
             {{firstName}} {{lastName}} </div>
         <div id="position" style="font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;color: #2F3E48;">
@@ -137,3 +140,7 @@
     </div>
 </div>
 <img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />
+
+<div [innerHtml]="htmlData">
+   
+    </div>

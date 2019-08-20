@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import companyInfo from '../data/companies.json';
 import locationsInfo from '../data/locations.json';
 import emailSuffixesInfo from '../data/emailSuffixes.json';
 import { CompleteCompany, CompleteLocation, Logo } from '../app/models/general.model';
-import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from 'constants';
 
 @Component({
     selector: 'app-root',
@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     public locations: any;
     public emailSuffixes: any;
 
-    public constructor() {
+    public constructor( private sanitizer: DomSanitizer) {
         this.companies = this.fillCompaniesList(companyInfo);
         this.locations = this.fillLocationsList(locationsInfo);
         this.emailSuffixes = emailSuffixesInfo;
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit {
     }
 
     getCompleteCompany(value: any): CompleteCompany {
-        value = value.target.selectedIndex;
+        value = value.target.selectedIndex -1;
         const completeCompany = this.completeCompany;
 
         completeCompany.name = this.companies[value].name;
@@ -128,7 +128,7 @@ export class AppComponent implements OnInit {
     }
 
     getCompleteLocation(value: any): CompleteLocation {
-        value = value.target.selectedIndex;
+        value = value.target.selectedIndex -1;
         const completeLocation = this.completeLocation;
 
         completeLocation.street = this.locations[value].street;
@@ -191,11 +191,30 @@ export class AppComponent implements OnInit {
         selectedLogo.alt = this.logos[i].alt;
 
         this.selectedLogo = selectedLogo;
+    } 
+
+    htmlData: any;
+    submit(generatehtml): void {
+       // console.log("selector::", generatehtml);
+
+       var x = document.getElementById('generateHtml').innerHTML;
+       
+       
+       this.sanitizeHTMLContent(x);
+
+       // document.execCommand('copy');
+
+        //generatehtml.setSelectionRange(0, 0);
     }
 
-    submit(): void {
+    sanitizeHTMLContent(x){
+        this.htmlData = this.sanitizer.bypassSecurityTrustHtml(x);  
 
-    }
+        var newWindow = window.open("", "_blank");
+        newWindow.document.write(this.htmlData);     
+   }
+
+
 
     onChange(): void {
         if (this.firstName !== ''
