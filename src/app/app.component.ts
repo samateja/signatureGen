@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.version = '2.0.0';
-        this.selectedLogo = new Logo(-1, 'Serviceware SE', '../assets/images/logo_img_ServicewareSE.PNG', 'Serviceware SE');
+        this.selectedLogo = new Logo(-1, 'Serviceware SE', 'assets/images/logo_img_ServicewareSE.PNG', 'Serviceware SE');
 
         // this.fillDemoData();
     }
