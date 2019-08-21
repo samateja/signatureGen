@@ -19,7 +19,7 @@
             <fieldset class="col-md-4 form-group">
                 <label for="location">Select Location</label>
                 <select class="form-control" name="locationList" id="locationList" (change)="updateLocation($event)">
-                        <option [disabled]=true>Select Location</option>
+                    <option [disabled]=true>Select Location</option>
                     <option *ngFor="let location of locations" value="{{location.id}}">
                         {{location.town}}
                     </option>
@@ -28,19 +28,19 @@
             <fieldset class="col-md-4 form-group">
                 <label for="position">Position</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="position"
-                    placeholder="Enter Position" [(ngModel)]="position" name="position" (keyup)="onChange($event)">
+                    placeholder="Enter Position" [(ngModel)]="position" name="position" (keyup)="onChange()">
             </fieldset>
 
             <!---------------------------------------------------------------------->
             <fieldset class="col-md-3 form-group">
                 <label for="firstName">First Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="firstName"
-                    placeholder="Enter First Name" [(ngModel)]="firstName" name="firstName" (keyup)="onChange($event)">
+                    placeholder="Enter First Name" [(ngModel)]="firstName" name="firstName" (keyup)="onChange()">
             </fieldset>
             <fieldset class="col-md-3 form-group">
                 <label for="lastName">Last Name</label>
                 <input (click)="$event.target.select()" type="text" class="form-control" id="lastName"
-                    placeholder="Enter Last Name" [(ngModel)]="lastName" name="lastName" (keyup)="onChange($event)">
+                    placeholder="Enter Last Name" [(ngModel)]="lastName" name="lastName" (keyup)="onChange()">
             </fieldset>
             <fieldset class="col-md-6 form-group">
                 <label for="email">Email Address</label>
@@ -49,12 +49,7 @@
                         placeholder="Enter Email Address" [(ngModel)]="emailPrefix" name="emailPrefix">
                     <span class="input-group-addon input-group-addon-emaildropdown" id="basic-addon1"
                         style="cursor:pointer">
-                        <select class="input-group-addon-emaildropdown-select" name="selectedEmailSuffix"
-                            (change)="updateEmailSuffix($event)">
-                            <option *ngFor="let item of emailSuffixes.emailSuffixes" value="{{item.id}}">
-                                {{ item.emailSuffix }}
-                            </option>
-                        </select>
+                        {{ selectedEmailSuffix }}
                     </span>
                 </div>
             </fieldset>
@@ -89,10 +84,10 @@
             </fieldset>
 
             <fieldset class="col-md-2 col-md-offset-10 form-group">
-                <button (click)="submit(generatePrievew)" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
-                    [disabled]="!readyToSubmit">Copy HTML to ClipBoard</button>
+                <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
+                    [disabled]="!readyToSubmit">Copy HTML to
+                    ClipBoard</button>
             </fieldset>
-            <!-- <input type="text" value="{{htmlData}}" /> -->
         </div>
     </form>
 
@@ -105,12 +100,13 @@
         </div>
         <div style="display:inline-block;border:none;padding:0in 15.0pt 10pt 0in;font-family:'Source Sans Pro',sans-serif;"
             id="pmcsLogo">
-            <img style="vertical-align:baseline;" alt="{{selectedLogo.alt}}" src="{{selectedLogo.imgUrl}}" />
+            <img id="logoImage" style="vertical-align:baseline;" alt="{{selectedLogo.alt}}"
+                src="{{selectedLogo.imgUrl}}" />
         </div>
         <div id="moreInfo" style="display:flex;align-items:center;">
             <div style="display:inline-block;border:none;border-right:solid #0082BB 2px;padding:0in 15.0pt 0in 0pt;font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;"
                 id="companyAdress">
-                {{completeCompany.name}}<br>
+                <div [hidden]="completeCompany.name === ''">{{completeCompany.name}}<br></div>
                 {{completeLocation.street}}<br>
                 {{completeLocation.address1}}<br />
                 <div ng-show="completeLocation.address2 != undefined">{{completeLocation.address2}}</div>
@@ -140,7 +136,3 @@
     </div>
 </div>
 <img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />
-
-<div [innerHtml]="htmlData">
-   
-    </div>

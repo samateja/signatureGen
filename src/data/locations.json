@@ -5,56 +5,64 @@
             "town": "Baar",
             "telephoneNum": "41 (0) 41 725421-",
             "street": "Haldenstrasse 5",
-            "address1": "CH-6340 Baar"
+            "address1": "CH-6340 Baar",
+            "country": "Switzerland"
         },
         {
             "id": 1,
             "town": "Bad Camberg (PMCS)",
             "telephoneNum": "49 (0) 6434 94 50-",
             "street": "Carl-Zeiss-Straße 16",
-            "address1": "D-65520 Bad Camberg"
+            "address1": "D-65520 Bad Camberg",
+            "country": "Germany"
         },
         {
             "id": 2,
             "town": "Bad Camberg (helpLine)",
             "telephoneNum": "49 (0) 6434 930 76-",
             "street": "Carl-Zeiss-Straße 16",
-            "address1": "D-65520 Bad Camberg"
+            "address1": "D-65520 Bad Camberg",
+            "country": "Germany"
         },
         {
             "id": 3,
             "town": "Berlin",
             "telephoneNum": "49 (0) 6434 94 50-",
             "street": "Friedrichstraße 95",
-            "address1": "D-10117 Berlin"
+            "address1": "D-10117 Berlin",
+            "country": "Germany"
         },
         {
             "id": 12,
             "town": "Darmstadt",
             "telephoneNum": "49 (40) 851927-",
             "street": "Berliner Allee 47",
-            "address1": "D-64295 Darmstadt"
+            "address1": "D-64295 Darmstadt",
+            "country": "Germany"
         },
         {
             "id": 4,
             "town": "Hamburg",
             "telephoneNum": "49 (40) 851927-",
             "street": "Schützenstraße 5",
-            "address1": "D-22761 Hamburg"
+            "address1": "D-22761 Hamburg",
+            "country": "Germany"
         },
         {
             "id": 5,
             "town": "Hürth",
             "telephoneNum": "49 (0) 2233 20 12-",
             "street": "Kalscheurener Straße 2a",
-            "address1": "D-50354 Hürth"
+            "address1": "D-50354 Hürth",
+            "country": "Germany"
         },
         {
             "id": 6,
             "town": "Leiden",
             "telephoneNum": "31 (0) 71 523 26-04",
             "street": "Dellaertweg 9 C",
-            "address1": "NL-2316 WZ Leiden"
+            "address1": "NL-2316 WZ Leiden",
+            "country": "Netherlands"
         },
         {
             "id": 7,
@@ -62,35 +70,48 @@
             "telephoneNum": "44 (0) 1276 534 837",
             "street": "Abbey House - 282 Farnborough Road",
             "address1": "Farnborough, Hampshire",
-            "address2": "GU14 7NA, England"
+            "address2": "GU14 7NA, England",
+            "country": "Great Britain"
         },
         {
             "id": 8,
             "town": "Palma",
             "telephoneNum": "34 (0) 971 884 672",
             "street": "Carrer Gremi de Sabaters 21, Local A21",
-            "address1": "ESP-07009 Palma de Mallorca"
+            "address1": "ESP-07009 Palma de Mallorca",
+            "country": "Spain"
         },
         {
             "id": 9,
             "town": "Stockholm",
             "telephoneNum": "46 (0) 8 5500 2600",
             "street": "Vasagatan 7",
-            "address1": "SE-111 20 Stockholm"
+            "address1": "SE-111 20 Stockholm",
+            "country": "Sweden"
         },
         {
             "id": 10,
             "town": "Unterhaching",
             "telephoneNum": "49 (0) 89 2000 1805-",
             "street": "Hauptstraße 1",
-            "address1": "D-82008 Unterhaching"
+            "address1": "D-82008 Unterhaching",
+            "country": "Germany"
         },
         {
             "id": 11,
             "town": "Vienna",
             "telephoneNum": "43 (1) 715 4180-",
             "street": "Karl-Farkas-Gasse 22 / Top 1b / 15",
-            "address1": "AT-1030 Wien"
+            "address1": "AT-1030 Wien",
+            "country": "Austria"
+        },
+        {
+            "id": 13,
+            "town": "Herrenberg",
+            "telephoneNum": "49 (0) 7032 94 51 - 0",
+            "street": "Bahnhofstraße 29",
+            "address1": "D-71083 Herrenberg",
+            "country": "Germany"
         }
     ]
 }

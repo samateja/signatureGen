@@ -1,0 +1,259 @@
+[33mcommit 79221d67c42c596a4ac6a662cadef3bc4c1a2d5b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Venkata Sama <venkata.sama@helpline.pmcs.de>
+Date:   Tue Aug 20 16:08:49 2019 +0200
+
+    select ALL fixed without json changes, implementing copy to clipboard
+
+[1mdiff --git a/src/app/app.component.html b/src/app/app.component.html[m
+[1mindex 1f94daf..f073d72 100644[m
+[1m--- a/src/app/app.component.html[m
+[1m+++ b/src/app/app.component.html[m
+[36m@@ -10,6 +10,7 @@[m
+             <fieldset class="col-md-4 form-group">[m
+                 <label for="company">Select Company</label>[m
+                 <select class="form-control" name="companyList" id="companyList" (change)="updateCompany($event)">[m
+[32m+[m[32m                    <option [disabled]=true>Select company</option>[m
+                     <option *ngFor="let company of companies " value="{{company.id}}">[m
+                         {{company.name}}[m
+                     </option>[m
+[36m@@ -18,6 +19,7 @@[m
+             <fieldset class="col-md-4 form-group">[m
+                 <label for="location">Select Location</label>[m
+                 <select class="form-control" name="locationList" id="locationList" (change)="updateLocation($event)">[m
+[32m+[m[32m                        <option [disabled]=true>Select Location</option>[m
+                     <option *ngFor="let location of locations" value="{{location.id}}">[m
+                         {{location.town}}[m
+                     </option>[m
+[36m@@ -87,14 +89,15 @@[m
+             </fieldset>[m
+ [m
+             <fieldset class="col-md-2 col-md-offset-10 form-group">[m
+[31m-                <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"[m
+[31m-                    [disabled]="!readyToSubmit">Generate HTML in new window</button>[m
+[32m+[m[32m                <button (click)="submit(generatePrievew)" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"[m
+[32m+[m[32m                    [disabled]="!readyToSubmit">Copy HTML to ClipBoard</button>[m
+             </fieldset>[m
+[32m+[m[32m            <!-- <input type="text" value="{{htmlData}}" /> -->[m
+         </div>[m
+     </form>[m
+ [m
+     <h1 class="sg_title">Preview:</h1>[m
+[31m-    <div style="display:inline-block;user-select:none;">[m
+[32m+[m[32m    <div style="display:inline-block;user-select:none;" id="generateHtml">[m
+         <div id="name" style="font-size:12.0pt;font-family:'Source Sans Pro',sans-serif;color: #2F3E48;">[m
+             {{firstName}} {{lastName}} </div>[m
+         <div id="position" style="font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;color: #2F3E48;">[m
+[36m@@ -136,4 +139,8 @@[m
+         </p>[m
+     </div>[m
+ </div>[m
+[31m-<img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />[m
+\ No newline at end of file[m
+[32m+[m[32m<img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />[m
+[32m+[m
+[32m+[m[32m<div [innerHtml]="htmlData">[m
+[32m+[m[41m   [m
+[32m+[m[32m    </div>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/app/app.component.ts b/src/app/app.component.ts[m
+[1mindex 07b0988..92a000c 100644[m
+[1m--- a/src/app/app.component.ts[m
+[1m+++ b/src/app/app.component.ts[m
+[36m@@ -1,10 +1,10 @@[m
+ import { Component, OnInit } from '@angular/core';[m
+[32m+[m[32mimport { DomSanitizer } from '@angular/platform-browser';[m
+ [m
+ import companyInfo from '../data/companies.json';[m
+ import locationsInfo from '../data/locations.json';[m
+ import emailSuffixesInfo from '../data/emailSuffixes.json';[m
+ import { CompleteCompany, CompleteLocation, Logo } from '../app/models/general.model';[m
+[31m-import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from 'constants';[m
+ [m
+ @Component({[m
+     selector: 'app-root',[m
+[36m@@ -45,7 +45,7 @@[m [mexport class AppComponent implements OnInit {[m
+     public locations: any;[m
+     public emailSuffixes: any;[m
+ [m
+[31m-    public constructor() {[m
+[32m+[m[32m    public constructor( private sanitizer: DomSanitizer) {[m
+         this.companies = this.fillCompaniesList(companyInfo);[m
+         this.locations = this.fillLocationsList(locationsInfo);[m
+         this.emailSuffixes = emailSuffixesInfo;[m
+[36m@@ -95,7 +95,7 @@[m [mexport class AppComponent implements OnInit {[m
+     }[m
+ [m
+     getCompleteCompany(value: any): CompleteCompany {[m
+[31m-        value = value.target.selectedIndex;[m
+[32m+[m[32m        value = value.target.selectedIndex -1;[m
+         const completeCompany = this.completeCompany;[m
+ [m
+         completeCompany.name = this.companies[value].name;[m
+[36m@@ -128,7 +128,7 @@[m [mexport class AppComponent implements OnInit {[m
+     }[m
+ [m
+     getCompleteLocation(value: any): CompleteLocation {[m
+[31m-        value = value.target.selectedIndex;[m
+[32m+[m[32m        value = value.target.selectedIndex -1;[m
+         const completeLocation = this.completeLocation;[m
+ [m
+         completeLocation.street = this.locations[value].street;[m
+[36m@@ -191,12 +191,31 @@[m [mexport class AppComponent implements OnInit {[m
+         selectedLogo.alt = this.logos[i].alt;[m
+ [m
+         this.selectedLogo = selectedLogo;[m
+[31m-    }[m
+[32m+[m[32m    }[m[41m [m
+[32m+[m
+[32m+[m[32m    htmlData: any;[m
+[32m+[m[32m    submit(generatehtml): void {[m
+[32m+[m[32m       // console.log("selector::", generatehtml);[m
+[32m+[m
+[32m+[m[32m       var x = document.getElementById('generateHtml').innerHTML;[m
+[32m+[m[41m       [m
+[32m+[m[41m       [m
+[32m+[m[32m       this.sanitizeHTMLContent(x);[m
+ [m
+[31m-    submit(): void {[m
+[32m+[m[32m       // document.execCommand('copy');[m
+ [m
+[32m+[m[32m        //generatehtml.setSelectionRange(0, 0);[m
+     }[m
+ [m
+[32m+[m[32m    sanitizeHTMLContent(x){[m
+[32m+[m[32m        this.htmlData = this.sanitizer.bypassSecurityTrustHtml(x);[m[41m  [m
+[32m+[m
+[32m+[m[32m        var newWindow = window.open("", "_blank");[m
+[32m+[m[32m        newWindow.document.write(this.htmlData);[m[41m     [m
+[32m+[m[32m   }[m
+[32m+[m
+[32m+[m
+[32m+[m
+     onChange(): void {[m
+         if (this.firstName !== ''[m
+             && this.lastName !== ''[m
+[1mdiff --git a/src/bkp_html.html b/src/bkp_html.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..064a60b[m
+[1m--- /dev/null[m
+[1m+++ b/src/bkp_html.html[m
+[36m@@ -0,0 +1,178 @@[m
+[32m+[m[32m<!DOCTYPE html>[m
+[32m+[m[32m<html lang="de">[m
+[32m+[m[32m<head>[m
+[32m+[m[32m    <title>Serviceware SE Email Signature Generator</title>[m
+[32m+[m[32m    <meta http-equiv="content-type" content="text/html" charset="utf-8" />[m
+[32m+[m
+[32m+[m[32m    <!-- JQuery -->[m
+[32m+[m[32m    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>[m
+[32m+[m
+[32m+[m[32m    <!-- Bootstrap -->[m
+[32m+[m[32m    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">[m
+[32m+[m[32m    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">[m
+[32m+[m[32m    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>[m
+[32m+[m
+[32m+[m[32m    <!-- AngularJS -->[m
+[32m+[m[32m    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>[m
+[32m+[m
+[32m+[m[32m    <!-- Own Files -->[m
+[32m+[m[32m    <link href="styles.css" rel="stylesheet" />[m
+[32m+[m[32m    <script type="text/javascript" src="app/controller.js"></script>[m
+[32m+[m[32m    <script type="text/javascript" src="data/companiesJson.js"></script>[m
+[32m+[m[32m    <script type="text/javascript" src="data/locationsJson.js"></script>[m
+[32m+[m[32m</head>[m
+[32m+[m
+[32m+[m
+[32m+[m[41m  [m
+[32m+[m[32m      <form class="well" style="width:1000px;">[m
+[32m+[m[32m          <div class="input-group">[m
+[32m+[m[32m              <fieldset class="col-md-4 form-group">[m
+[32m+[m[32m                  <label for="company">Select Company</label>[m
+[32m+[m[32m                  <select class="form-control" name="companyList" id="companyList" ng-model="companies.repeatSelect" ng-change="updateCompany()">[m
+[32m+[m[32m                      <option ng-repeat="company in companies.companies | orderBy:'+name'" value="{{company.id}}">{{company.name}}</option>[m
+[32m+[m[32m                  </select>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <fieldset class="col-md-4 form-group">[m
+[32m+[m[32m                  <label for="location">Select Location</label>[m
+[32m+[m[32m                  <select class="form-control" name="locationList" id="locationList" ng-model="locations.repeatSelect" ng-change="updateLocation()">[m
+[32m+[m[32m                      <option ng-repeat="location in locations.locations | orderBy:'+town'" value="{{location.id}}">{{location.town}}</option>[m
+[32m+[m[32m                  </select>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <fieldset class="col-md-4 form-group">[m
+[32m+[m[32m                  <label for="position">Position</label>[m
+[32m+[m[32m                  <input onClick="this.select();" type="text" class="form-control" id="position" placeholder="Enter Position" ng-model="position">[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m
+[32m+[m[32m              <!---------------------------------------------------------------------->[m
+[32m+[m[32m              <fieldset class="col-md-3 form-group">[m
+[32m+[m[32m                  <label for="firstName">First Name</label>[m
+[32m+[m[32m                  <input onClick="this.select();" type="text" class="form-control" id="firstName" placeholder="Enter First Name" ng-model="firstName">[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <fieldset class="col-md-3 form-group">[m
+[32m+[m[32m                  <label for="firstName">Last Name</label>[m
+[32m+[m[32m                  <input onClick="this.select();" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" ng-model="lastName">[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <fieldset class="col-md-6 form-group">[m
+[32m+[m[32m                  <label for="email">Email Address</label>[m
+[32m+[m[32m                  <div class="input-group">[m
+[32m+[m[32m                      <input onClick="this.select();" type="text" class="form-control" placeholder="Enter Email Address" ng-model="emailPrefix">[m
+[32m+[m[32m                      <span class="input-group-addon" id="basic-addon1" style="cursor:pointer">[m
+[32m+[m[32m                          <select ng-options="item.emailSuffix as item.emailSuffix for item in emailSuffixes track by item.id" ng-model="selectedEmailSuffix" ng-change="updateEmailSuffix()">[m
+[32m+[m[32m                              <option value="Select Email" selected></option>[m
+[32m+[m[32m                          </select>[m
+[32m+[m[32m                      </span>[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <!---------------------------------------------------------------------->[m
+[32m+[m[32m              <fieldset class="col-md-4 form-group">[m
+[32m+[m[32m                  <label for="telNr">Telephone Number</label>[m
+[32m+[m[32m                  <div class="input-group">[m
+[32m+[m[32m                      <span class="input-group-addon" id="basic-addon1">+</span>[m
+[32m+[m[32m                      <input type="text" class="form-control" id="telNr" placeholder="Enter Telephone Number" ng-model="finalTelephoneNum">[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <fieldset class="col-md-4 form-group">[m
+[32m+[m[32m                  <label for="telNr">Mobile Number</label>[m
+[32m+[m[32m                  <div class="input-group">[m
+[32m+[m[32m                      <span class="input-group-addon" id="basic-addon1">+</span>[m
+[32m+[m[32m                      <input onClick="this.select();" type="text" class="form-control" id="mobileNr" placeholder="Enter Mobile Number" ng-model="mobileNr">[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m
+[32m+[m[32m              <fieldset class="col-md-2 form-group">[m
+[32m+[m[32m                  <label for="supportNr">Support Number?</label>[m
+[32m+[m[32m                  <div class="btn-group" data-toggle="buttons">[m
+[32m+[m[32m                      <label class="btn btn-secondary" style="border:1px black solid;background-color:white;" ng-click="showSupportNum = true">[m
+[32m+[m[32m                          <input type="radio" />Yes[m
+[32m+[m[32m                      </label>[m
+[32m+[m[32m                      <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;" ng-click="showSupportNum = false">[m
+[32m+[m[32m                          <input type="radio" checked />No[m
+[32m+[m[32m                      </label>[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m
+[32m+[m[32m              <fieldset class="col-md-2 form-group">[m
+[32m+[m[32m                  <label for="linkLang">Why Serviceware</label>[m
+[32m+[m[32m                  <div class="btn-group" data-toggle="buttons">[m
+[32m+[m[32m                      <label class="btn btn-secondary" style="border:1px black solid;background-color:white;" ng-click="langGer = true">[m
+[32m+[m[32m                          <input type="radio" />DE[m
+[32m+[m[32m                      </label>[m
+[32m+[m[32m                      <label class="btn btn-secondary active" style="border:1px black solid;background-color:white;" ng-click="langGer = false">[m
+[32m+[m[32m                          <input type="radio" checked />EN[m
+[32m+[m[32m                      </label>[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>[m
+[32m+[m[32m              <!---------------------------------------------------------------------->[m
+[32m+[m[32m              <!--<fieldset class="col-md-12 form-group">[m
+[32m+[m[32m                  <label for="email">Select shown Social Media Icons</label><br />[m
+[32m+[m
+[32m+[m[32m                  <div class="btn-group" data-toggle="buttons" style="width:100%">[m
+[32m+[m[32m                      <label ng-click="showXing = !showXing" class="btn btn-secondary"><input type="checkbox" />Xing (Group)</label>[m
+[32m+[m[32m                      <label ng-click="showTwitterPMCS = !showTwitterPMCS" class="btn btn-secondary"><input type="checkbox" />Twitter (PMCS)</label>[m
+[32m+[m[32m                      <label ng-click="showTwitterHelpline = !showTwitterHelpline" class="btn btn-secondary"><input type="checkbox" />Twitter (helpLine)</label>[m
+[32m+[m[32m                      <label ng-click="showFacebook = !showFacebook" class="btn btn-secondary"><input type="checkbox" />Facebook (Group)</label>[m
+[32m+[m[32m                      <label ng-click="showLinkedin = !showLinkedin" class="btn btn-secondary"><input type="checkbox" />Linkedin (Group)</label>[m
+[32m+[m[32m                  </div>[m
+[32m+[m[32m              </fieldset>-->[m
+[32m+[m[32m              <fieldset style="display:none;" class="col-md-6 form-group">[m
+[32m+[m[32m                  <label for="logoSelection">Logo</label>[m
+[32m+[m[32m                  <select class="form-control" name="logoList" id="logoList" ng-model="logos.repeatSelect" 

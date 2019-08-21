@@ -1,18 +1,22 @@
 export class CompleteLocation {
+    id: number;
     town: string;
     street: string;
     address1: string;
     address2: string;
     telephoneNum: string;
     finalTelephoneNum: string;
+    country: string;
 
-    constructor(town: string, street: string, address1: string, address2: string, telephoneNum: string, finalTelephoneNum: string) {
+    constructor(id: number, town: string, street: string, address1: string, address2: string, telephoneNum: string, finalTelephoneNum: string, country: string) {
+        this.id = id;
         this.town = town;
         this.street = street;
         this.address1 = address1;
         this.address2 = address2;
         this.telephoneNum = telephoneNum;
         this.finalTelephoneNum = finalTelephoneNum;
+        this.country = country;
     }
 }
 
