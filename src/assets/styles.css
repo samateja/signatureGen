@@ -2,6 +2,10 @@
     background: #FF8300!important;
 }
 
+.btnGenerateHTML:focus {
+    outline: none;
+}
+
 .btnGenerateHTML:not([disabled]) {
     color: #ffffff;
 }
@@ -14,15 +18,16 @@
 .btn-secondary {
     background: #dadada;
     color: #7a7a7a;
-    border:0px;
-    border-radius:50px;
+    border: 0px;
+    border-radius: 50px;
     font-family: 'Source Sans Pro', sans-serif;
 }
- 
-.btn-secondary:active, .btn-secondary.active {
+
+.btn-secondary:active,
+.btn-secondary.active {
     background: #FF8300!important;
     box-shadow: none!important;
-    border:0px;
+    border: 0px;
     color: #ffffff;
 }
 
@@ -75,4 +80,47 @@ body {
 
 .btn-primary {
     background-image: none;
+}
+
+.copyMessage {
+    opacity: 0;
+}
+
+.showCopyMessage {
+    opacity: 1 !important;
+    animation: showCopyMessage-frames 0.5s 1;
+    -webkit-animation: showCopyMessage-frames 0.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes showCopyMessage-frames {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes showCopyMessage-frames {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.badge-success {
+    background-color: green;
+}
+
+.badge {
+    position: fixed;
+    top: 10px;
+    right: 10px;
 }

@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
     public companies: any;
     public locations: any;
     public emailSuffixes: any;
+    public showCopyMessage: boolean = false;
 
     public constructor(private sanitizer: DomSanitizer) {
         this.companies = this.fillCompaniesList(companyInfo);
@@ -172,7 +173,6 @@ export class AppComponent implements OnInit {
     }
 
     updatePhoneNumber(): void {
-        console.log(this.finalTelephoneNum);
         this.onChange();
     }
 
@@ -192,7 +192,7 @@ export class AppComponent implements OnInit {
     updateLogo(compName: string): void {
         const selectedLogo: Logo = this.selectedLogo;
         let i = 0;
-        if (compName === 'Strategic Service Consulting GmbH') {
+        if (compName === 'Strategic Service Consulting GmbH - A Serviceware Company') {
             i = 1;
         } else if (compName === 'cubus AG - A Serviceware Company') {
             i = 2;
@@ -218,6 +218,22 @@ export class AppComponent implements OnInit {
         document.addEventListener('copy', listener);
         document.execCommand('copy');
         document.removeEventListener('copy', listener);
+
+        console.log("true");
+
+        $("#copyMessage").removeClass('showCopyMessage');
+        $("#copyMessage").addClass('showCopyMessage');
+
+        this.showCopyMessage = true;
+        this.delay(1750);
+    }
+
+    delay(ms: number) {
+        return new Promise(resolve => setTimeout(function () {
+            console.log("false");
+            $("#copyMessage").removeClass('showCopyMessage');
+            this.showCopyMessage = false;
+        }, ms));
     }
 
     generateText(): string {

@@ -87,6 +87,9 @@
                 <button (click)="submit()" type="submit" class="btn btn-secondary pull-right btnGenerateHTML"
                     [disabled]="!readyToSubmit">Copy HTML to
                     ClipBoard</button>
+                <div id="copyMessage" class="copyMessage">
+                    <span class="badge badge-success">Successfully copied to clipboard</span>
+                </div>
             </fieldset>
         </div>
     </form>
@@ -107,8 +110,8 @@
             <div style="display:inline-block;border:none;border-right:solid #0082BB 2px;padding:0in 15.0pt 0in 0pt;font-family:'Source Sans Pro',sans-serif;font-size:10.0pt;"
                 id="companyAdress">
                 <div [hidden]="completeCompany.name === ''">{{completeCompany.name}}<br></div>
-                {{completeLocation.street}}<br>
-                {{completeLocation.address1}}<br />
+                {{completeLocation.street}}<br> {{completeLocation.address1}}
+                <br />
                 <div ng-show="completeLocation.address2 != undefined">{{completeLocation.address2}}</div>
                 {{completeCompany.website}}
             </div>
@@ -118,7 +121,8 @@
                 <div [hidden]="finalTelephoneNum === ''">Tel. &#43;{{finalTelephoneNum}}</div>
                 <div [hidden]="mobileNr === ''">Mob. &#43;{{mobileNr}}</div>
                 <div [hidden]="!showSupportNum || completeCompany.supportNum === ''">Support:
-                    &#43;{{completeCompany.supportNum}}</div>
+                    &#43;{{completeCompany.supportNum}}
+                </div>
             </div>
         </div>
         <p class="MsoNormal">
@@ -135,4 +139,4 @@
         </p>
     </div>
 </div>
-<img src="../assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />
+<img src="assets/images/bottomGraphic.png" style="width:100%; position:fixed; bottom:0;" />

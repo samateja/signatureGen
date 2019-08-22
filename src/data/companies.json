@@ -95,30 +95,6 @@
         },
         {
             "id": 4,
-            "name": "helpLine rd GmbH - A Serviceware Company",
-            "supportNum": "",
-            "old_website": "www.serviceware.se",
-            "imprints": [
-                {
-                    "id": 0,
-                    "text": "helpLine rd GmbH"
-                },
-                {
-                    "id": 1,
-                    "text": "Hauptniederlassung Kalscheurener Str. 2a, 50354 Hürth"
-                },
-                {
-                    "id": 2,
-                    "text": "Geschäftsführer: Dirk K. Martin"
-                },
-                {
-                    "id": 3,
-                    "text": "Amtsgericht Köln HRB 67727"
-                }
-            ]
-        },
-        {
-            "id": 5,
             "name": "helpLine B.V. - A Serviceware Company",
             "supportNum": "31 (0) 71/523 26 04",
             "old_website": "www.serviceware.se",
@@ -129,7 +105,7 @@
                 },
                 {
                     "id": 1,
-                    "text": "Registered office: Le'id'en"
+                    "text": "Registered office: Leiden"
                 },
                 {
                     "id": 2,
@@ -142,7 +118,7 @@
             ]
         },
         {
-            "id": 6,
+            "id": 5,
             "name": "Catenic AG - A Serviceware Company",
             "supportNum": "49 (0) 6434 9450-333",
             "old_website": "www.anafee.com",
@@ -170,7 +146,7 @@
             ]
         },
         {
-            "id": 7,
+            "id": 6,
             "name": "helpLine IT solutions GmbH - A Serviceware Company",
             "supportNum": "49 (0) 6434 9450-333",
             "old_website": "www.serviceware.se",
@@ -194,7 +170,7 @@
             ]
         },
         {
-            "id": 8,
+            "id": 7,
             "name": "PMCS.helpLine Software S.L. - A Serviceware Company",
             "supportNum": "",
             "old_website": "www.serviceware.se",
@@ -218,7 +194,7 @@
             ]
         },
         {
-            "id": 9,
+            "id": 8,
             "name": "Serviceware SE",
             "supportNum": "49 (0) 6434 9450-333",
             "old_website": "www.serviceware.se",
@@ -246,7 +222,7 @@
             ]
         },
         {
-            "id": 10,
+            "id": 9,
             "name": "Sabio GmbH - A Serviceware Company",
             "supportNum": "",
             "imprints": [
@@ -269,7 +245,7 @@
             ]
         },
         {
-            "id": 11,
+            "id": 10,
             "name": "cubus AG - A Serviceware Company",
             "supportNum": "",
             "imprints": [
